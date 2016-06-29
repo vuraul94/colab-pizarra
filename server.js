@@ -46,8 +46,9 @@ io.on('connection', function(cliente) {
   })
 
   cliente.on('dibujar', function (data) {
-     line_history.push({line: data.line, color: cliente.color});
-     io.emit('dibujar', { line: data.line, color: cliente.color});
+    cliente.line=data.line;
+     line_history.push({line: cliente.line, color: cliente.color});
+     io.emit('dibujar', { line: cliente.line, color: cliente.color});
   });
 
   cliente.on('delete', function(){
