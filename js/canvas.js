@@ -72,7 +72,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
 	cliente.on('dibujar', function (data) {
       var line = data.line;
-      // context.beginPath();
+      context.beginPath();
       context.lineWidth = 5;
       context.moveTo((line[0].x * width)-coord.left, (line[0].y * height)-coord.top);
       context.lineTo((line[1].x * width)-coord.left, (line[1].y * height)-coord.top);
