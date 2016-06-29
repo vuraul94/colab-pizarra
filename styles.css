@@ -1,0 +1,17 @@
+#messages { list-style-type: none; margin: 0; padding: 0; }
+#messages li { padding: 5px 10px; }
+#messages li:nth-child(odd) { background: #eee; }
+
+#drawing {
+  display: block;
+  box-sizing: inherit;
+  padding: 0px;
+  background-color: #fff;
+}
+#board{
+  width: 70%;
+  height: 500px;
+  margin: 3% auto;
+  -webkit-box-shadow: 1px 1px 10px 1px #000000;
+  box-shadow: 1px 1px 10px 1px #000000;
+}

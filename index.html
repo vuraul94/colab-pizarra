@@ -1,0 +1,82 @@
+<!doctype html>
+
+<html>
+<head>
+  <title>Proyecto</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="manifest" href="/manifest.json">
+  <script src="/bower_components/webcomponentsjs/webcomponents-lite.js"></script>
+  <link rel="import" href="/src/elements.html">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular.min.js"></script>
+  <link rel="stylesheet" href="/styles.css">
+  <script src="socket.io/socket.io.js"></script>
+  <script src="/js/canvas.js" charset="utf-8"></script>
+</head>
+<body class="fullbleed vertical layout" style="background-color: #eeeeee;">
+
+  <paper-dialog opened modal id="login">
+    <form id="loginForm" action="">
+      <paper-input type="text" id="nombre" label="Nombre"></paper-input>
+      <paper-button id="btnLog" onclick="login.close()">Iniciar</paper-button>
+    </form>
+  </paper-dialog>
+
+  <paper-toast id="newLogin">
+    ha ingresado <span id="name"><span></span></span>
+  </paper-toast>
+
+  <paper-toast id="newLogout">
+    ha salido <span id="nameOut"><span></span></span>
+  </paper-toast>
+
+  <paper-header-panel mode="waterfall">
+    <paper-toolbar>
+      <div class="title">BrainStorm</div>
+      <paper-icon-button icon="av:replay" id="delete"></paper-icon-button>
+      <paper-icon-button icon="icons:face" id="usersBtn" onclick="users.open()"></paper-icon-button>
+      <paper-icon-button icon="communication:chat"  id="chatBtn" onclick="chat.open()" style="float:right;"></paper-icon-button>
+
+      <paper-tooltip for="delete">Borrar todo</paper-tooltip>
+      <paper-tooltip for="usersBtn">Usuarios</paper-tooltip>
+      <paper-tooltip for="chatBtn">Chat</paper-tooltip>
+    </paper-toolbar>
+    <div class="container">
+
+      <div id="board">
+        <canvas id="drawing">
+        </canvas>
+      </div>
+
+      <paper-dialog id="chat" style="position: absolute; bottom:3%; right:2%;height: 70%; width: 350px;">
+        <h3>Chat</h3>
+        <paper-dialog-scrollable scroll-target>
+          <div style="height: 150px;">
+            <ul id="messages" style="list-style: none; margin:0; box-sizing: border-box; padding:0;"></ul>
+          </div>
+        </paper-dialog-scrollable>
+        <form id="chatForm" action="">
+          <paper-textarea id="m" autocomplete="off" label="Mensaje" maxlength="100" char-counter> </paper-textarea>
+          <paper-icon-button icon="icons:send" id="chatFormBtn"></paper-icon-button>
+        </form>
+      </paper-dialog>
+
+      <paper-dialog id="users" style="height: 90%; width: 70%; margin: 0 auto;">
+        <h3>Usuarios en linea: <span id="numConectados">0</span></h3>
+        <paper-dialog-scrollable scroll-target>
+          <div style="height: 500px;">
+            <ul id="listaUsuarios">
+            </ul>
+          </div>
+        </paper-dialog-scrollable>
+      </paper-dialog>
+
+    </div>
+
+  </paper-header-panel>
+
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="/js/chat.js" charset="utf-8"></script>
+</body>
+</html>

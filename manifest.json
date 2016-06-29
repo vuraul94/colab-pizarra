@@ -1,0 +1,6 @@
+{
+  "name": "Proyecto",
+  "short_name": "Proyecto",
+  "start_url": "/",
+  "display": "standalone"
+}
