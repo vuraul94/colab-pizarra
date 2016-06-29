@@ -78,7 +78,6 @@ document.addEventListener("DOMContentLoaded", function() {
       context.lineTo((line[1].x * width)-coord.left, (line[1].y * height)-coord.top);
       context.stroke();
       context.strokeStyle= data.color;
-
    });
 
 

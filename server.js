@@ -15,7 +15,7 @@ app.get('/',function (req, res) {
 io.on('connection', function(cliente) {
 
   for (var i in line_history) {
-     cliente.emit('draw_line', { line: line_history[i].line, color: line_history[i].color} );
+     cliente.emit('dibujar', { line: line_history[i].line, color: line_history[i].color} );
   }
 
   cliente.on('login',function(user) {
