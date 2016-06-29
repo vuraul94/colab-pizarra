@@ -10,6 +10,7 @@
   <link rel="import" href="/src/elements.html">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular.min.js"></script>
+  <link rel="stylesheet" href="https://necolas.github.io/normalize.css/4.1.1/normalize.css">
   <link rel="stylesheet" href="/styles.css">
   <script src="socket.io/socket.io.js"></script>
   <script src="/js/canvas.js" charset="utf-8"></script>
@@ -18,7 +19,7 @@
 
   <paper-dialog opened modal id="login">
     <form id="loginForm" action="">
-      <paper-input type="text" id="nombre" label="Nombre"></paper-input>
+      <paper-input type="text" id="nombre" label="Nombre" required></paper-input>
       <paper-button id="btnLog" onclick="login.close()">Iniciar</paper-button>
     </form>
   </paper-dialog>
@@ -57,7 +58,7 @@
           </div>
         </paper-dialog-scrollable>
         <form id="chatForm" action="">
-          <paper-textarea id="m" autocomplete="off" label="Mensaje" maxlength="100" char-counter> </paper-textarea>
+          <paper-textarea id="m" autocomplete="off" label="Mensaje" maxlength="100" char-counter required> </paper-textarea>
           <paper-icon-button icon="icons:send" id="chatFormBtn"></paper-icon-button>
         </form>
       </paper-dialog>
@@ -71,7 +72,6 @@
           </div>
         </paper-dialog-scrollable>
       </paper-dialog>
-
     </div>
 
   </paper-header-panel>
