@@ -77,7 +77,8 @@ document.addEventListener("DOMContentLoaded", function() {
       context.moveTo((line[0].x * width)-coord.left, (line[0].y * height)-coord.top);
       context.lineTo((line[1].x * width)-coord.left, (line[1].y * height)-coord.top);
       context.stroke();
-      context.strokeStyle= data.color ;
+      context.strokeStyle= data.color;
+
    });
 
 

@@ -3,7 +3,7 @@ var app = express();
 var http = require('http').createServer(app);
 var io = require('socket.io')(http);
 var path = require('path');
-var line_history = [];
+app.line_history = [];
 var users= [];
 
 app.use(express.static(path.join(__dirname,"/")));
@@ -14,8 +14,8 @@ app.get('/',function (req, res) {
 
 io.on('connection', function(cliente) {
 
-  for (var i in line_history) {
-     cliente.emit('draw_line', { line: line_history[i].line, color: line_history[i].color} );
+  for (var i in app.line_history) {
+     cliente.emit('draw_line', { line: app.line_history[i].line, color: app.line_history[i].color} );
   }
 
   cliente.on('login',function(user) {
@@ -46,9 +46,8 @@ io.on('connection', function(cliente) {
   })
 
   cliente.on('dibujar', function (data) {
-    cliente.line=data.line;
-     line_history.push({line: cliente.line, color: cliente.color});
-     io.emit('dibujar', { line: cliente.line, color: cliente.color});
+     app.line_history.push({line: data.line, color: cliente.color});
+     io.emit('dibujar', { line: data.line, color: cliente.color});
   });
 
   cliente.on('delete', function(){
