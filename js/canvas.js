@@ -68,6 +68,11 @@ document.addEventListener("DOMContentLoaded", function() {
       mouse.pos.x = e.clientX / width;
       mouse.pos.y = e.clientY / height;
       mouse.move = true;
+      if (mouse.click && mouse.move && mouse.pos_prev) {
+         cliente.emit('dibujar', { line: [ mouse.pos, mouse.pos_prev ] });
+         mouse.move = false;
+      }
+      mouse.pos_prev = {x: mouse.pos.x, y: mouse.pos.y};
    };
 
 	cliente.on('dibujar', function (data) {
@@ -80,15 +85,4 @@ document.addEventListener("DOMContentLoaded", function() {
       context.stroke();
    });
 
-
-   function mainLoop() {
-      if (mouse.click && mouse.move && mouse.pos_prev) {
-         cliente.emit('dibujar', { line: [ mouse.pos, mouse.pos_prev ] });
-         mouse.move = false;
-      }
-      mouse.pos_prev = {x: mouse.pos.x, y: mouse.pos.y};
-      setTimeout(mainLoop, 30);
-   }
-
-   mainLoop();
 });
